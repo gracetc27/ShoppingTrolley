@@ -6,7 +6,7 @@
 //
 import Foundation
 
-struct APIProduct {
+struct APIProduct: Codable {
     let id: Int
     let title: String
     let price: Float
