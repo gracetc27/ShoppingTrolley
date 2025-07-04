@@ -7,14 +7,14 @@
 
 import Foundation
 
-class FakeStoreAPIService {
+class FakeStoreAPIService: FakeStoreServiceProtocol {
     let apiURLString = "https://fakestoreapi.com/products"
 
     func getProducts() async throws(APIError) -> [APIProduct] {
         guard let url = URL(string: apiURLString) else {
             throw .invalidURL
         }
-        var request = URLRequest(url: url)
+        let request = URLRequest(url: url)
 
         let (data, _): (Data, URLResponse)
         do {

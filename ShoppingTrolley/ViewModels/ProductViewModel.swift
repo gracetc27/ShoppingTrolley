@@ -9,8 +9,13 @@ import Foundation
 
 @Observable
 class ProductViewModel {
-    var service = FakeStoreAPIService()
-    var products: [Product] = []
+    var service: FakeStoreAPIService
+    var products: [Product]?
+
+    init(service: FakeStoreAPIService, products: [Product]? = nil) {
+        self.service = service
+        self.products = products
+    }
 
     func getProducts() async {
         do throws(APIError) {
