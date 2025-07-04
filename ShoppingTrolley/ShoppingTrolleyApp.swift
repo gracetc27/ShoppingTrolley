@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct ShoppingTrolleyApp: App {
+    @State private var service = FakeStoreAPIService()
     var body: some Scene {
         WindowGroup {
-            ProductsListView()
+            MainTabView()
         }
     }
 }

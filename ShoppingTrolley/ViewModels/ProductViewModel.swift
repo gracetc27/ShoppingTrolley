@@ -10,11 +10,10 @@ import Foundation
 @Observable
 class ProductViewModel {
     var service: FakeStoreAPIService
-    var products: [Product]?
+    var products: [Product] = []
 
-    init(service: FakeStoreAPIService, products: [Product]? = nil) {
+    init(service: FakeStoreAPIService) {
         self.service = service
-        self.products = products
     }
 
     func getProducts() async {
