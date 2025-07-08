@@ -10,13 +10,18 @@ import SwiftUI
 struct ProductsListView: View {
     @State private var vm = ProductViewModel(service: FakeStoreAPIService())
     var body: some View {
-        List(vm.products) { product in
-            Text(product.title)
+        NavigationStack {
+            List(vm.products) { product in
+                NavigationLink {
+                    ProductDetailView(product: product)
+                } label: {
+                    Text(product.title)
+                }
+            }
+            .task {
+                await vm.getProducts()
+            }
         }
-        .task {
-            await vm.getProducts()
-        }
-        
     }
 }
 
